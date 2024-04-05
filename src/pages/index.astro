@@ -1,0 +1,29 @@
+---
+import type {Post} from 'types/post'
+import Footer from '../components/footer.astro';
+// src/pages/index.astro
+import PostCard from '../components/PostCard.astro';
+
+const res = await fetch('https://jsonplaceholder.typicode.com/posts');
+const posts = await res.json();
+---
+
+<html>
+<head>
+  <title>Mi Blog en Astro</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Bienvenido a mi Blog</h1>
+    <div>
+      {posts.map(post => (
+        <PostCard key={post.id} post={post} />
+      ))}
+    </div>
+  </div>
+  <Footer />
+</body>
+</html>
+
+
+
